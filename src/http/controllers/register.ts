@@ -25,9 +25,9 @@ export async function register(
       email,
       password,
     })
-  } catch (error) {
-    if (error instanceof UserAlreadyExistError) {
-      return response.status(409).send()
+  } catch (err) {
+    if (err instanceof UserAlreadyExistError) {
+      return response.status(409).send({ message: err.message })
     }
 
     return response.status(500).send()
